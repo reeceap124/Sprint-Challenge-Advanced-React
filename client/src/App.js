@@ -1,14 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import PlayerList from './components/PlayerList';
+import {useToggle} from './hooks/useToggle'
+
 
 const App = () => {
-  
-    return (
-      <div className="App">
-        <PlayerList/>
-      </div>
-    )
+  const [bg, setBg] = useToggle(false)
+  const toggle = e => { 
+    e.preventDefault();
+    setBg(!bg);
+  }
+  return (
+    <div className="App" onClick={toggle}>
+      <PlayerList/>
+    </div>
+  )
   
   
 }
